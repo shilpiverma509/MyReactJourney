@@ -1,13 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const h1 = React.createElement("h1", { id: "h1-heading" }, "My react app");
+//JSX =>Babel transpiles to React.createElement => React Element(JS Object) => HTML Element (on render)
+
+const jsxHeading = () => <h1>This is a jsx heading</h1>;
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-const jsxHeading = <h1>This is a jsx heading</h1>;
-root.render(jsxHeading);
 console.log(jsxHeading);
 
-const htmlheading = document.createElement("h1");
-htmlheading.innerHTML = "This is a html heading";
-console.log(htmlheading);
+//React Functional Component
+//Component Composition
+const HeadingComponent = () => {
+  <div id="container">
+    <jsxHeading />
+    <h1 className="heading">This is a jsx elemnt</h1>
+  </div>;
+  return <h1>this return a react element</h1>;
+};
+
+console.log(HeadingComponent);
+root.render(<HeadingComponent />);
