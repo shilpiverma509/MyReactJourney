@@ -18,3 +18,8 @@
    15.Tree Shaking - remove unused code 
    16. Different prod and dev builds
    
+
+   # React hooks
+   (Normal Js utility functions)
+   useState() -> Superpowerful State variable in React
+   
