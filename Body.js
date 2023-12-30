@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import RestrauntCard from "./src/components/RestrauntCard";
 import { Shimmer } from "./src/components/Shimmer";
 import { SWIGGY_API_URL } from "./src/utils/constants";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listofRestarunts, setListOfRestarunts] = useState([]);
@@ -77,7 +78,9 @@ const Body = () => {
 
       <div className="res-container">
         {filteredRestraunts.map((restraunt) => (
-          <RestrauntCard key={restraunt.info.id} resData={restraunt.info} />
+          <Link to={`/restraunt/${restraunt.info.id}`} key={restraunt.info.id}>
+            <RestrauntCard resData={restraunt.info} />
+          </Link>
         ))}
       </div>
     </div>
