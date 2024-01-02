@@ -3,6 +3,7 @@ import RestrauntCard from "./src/components/RestrauntCard";
 import { Shimmer } from "./src/components/Shimmer";
 import { SWIGGY_API_URL } from "./src/utils/constants";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "./src/utils/useOnlineStatus";
 
 const Body = () => {
   const [listofRestarunts, setListOfRestarunts] = useState([]);
@@ -29,6 +30,13 @@ const Body = () => {
   const handleInputChange = (e) => {
     return setSearchTerm(e.target.value);
   };
+
+  const onlineStatus = useOnlineStatus();
+  if (!onlineStatus) {
+    return (
+      <h1>Looks like you are offline. Please check your internet connection</h1>
+    );
+  }
 
   return listofRestarunts.length === 0 ? (
     <Shimmer />

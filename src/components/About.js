@@ -24,20 +24,9 @@ class About extends Component {
     return (
       <div>
         <h1>About me</h1>
-        <UserClass
+        <User
           name="Shilpi"
           location="gurgaon"
-          contact="@shilpiverma509FromClass"
-        />
-        <UserClass
-          name="Verma"
-          location="lucknow"
-          contact="@shilpiverma509FromClass"
-        />
-
-        <UserClass
-          name="Verma"
-          location="lucknow"
           contact="@shilpiverma509FromClass"
         />
       </div>

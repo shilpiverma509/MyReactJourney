@@ -22,4 +22,25 @@
    # React hooks
    (Normal Js utility functions)
    useState() -> Superpowerful State variable in React
+
+   # React Lifecycle 
+
+   Mounting:
+
+      Contructor method
+      Render(dummy data)
+         <HTML Dummy>
+      Component Did Mount
+         <API call>
+         <this.setState>
+
+   Update
+      render(updated state)==> Reconcialation algorith
+      render(API data)
+      <HTML loaded with API data>
+
+      componentDidUpdate
+
+   Unmount
+      when the component is removed from the DOM this method is called   
    

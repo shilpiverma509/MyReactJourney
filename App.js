@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { Header } from "./src/components/Header";
 import Body from "./Body";
@@ -7,7 +7,17 @@ import About from "./src/components/About";
 import Contact from "./src/components/Contact";
 import { Error } from "./src/components/Error";
 import RestrauntMenu from "./src/components/RestrauntMenu";
+//import Grocery from "./src/components/Grocery";
 
+//chunking
+//lazyLoading
+//dynamic loading
+//dynamic Importing
+//On demand Loading
+//Dynamic bundling
+
+const Grocery = lazy(() => import("./src/components/Grocery"));
+const About = lazy(() => import("./src/components/About"));
 const AppLayout = () => {
   return (
     <div className="app">
@@ -24,8 +34,26 @@ const appRouter = createBrowserRouter([
     element: <AppLayout />,
     children: [
       { path: "/", element: <Body /> },
-      { path: "/about", element: <About /> },
+      {
+        path: "/about",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            {" "}
+            <About />{" "}
+          </Suspense>
+        ),
+      },
       { path: "/contact", element: <Contact /> },
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            {" "}
+            <Grocery />{" "}
+          </Suspense>
+        ),
+      },
+
       {
         path: "/restraunt/:resId",
         element: <RestrauntMenu />,
