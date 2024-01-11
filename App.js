@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { Header } from "./src/components/Header";
 import Body from "./Body";
@@ -7,6 +7,7 @@ import About from "./src/components/About";
 import Contact from "./src/components/Contact";
 import { Error } from "./src/components/Error";
 import RestrauntMenu from "./src/components/RestrauntMenu";
+import { UserContext } from "./src/utils/UserContext";
 //import Grocery from "./src/components/Grocery";
 
 //chunking
@@ -19,12 +20,30 @@ import RestrauntMenu from "./src/components/RestrauntMenu";
 const Grocery = lazy(() => import("./src/components/Grocery"));
 const About = lazy(() => import("./src/components/About"));
 const AppLayout = () => {
+  //authentication
+  const [userName, setUserName] = useState();
+
+  useEffect(() => {
+    //make an API call and send username and pswd
+    const data = {
+      name: "Shilpi Verma",
+    };
+    setUserName(data.name);
+  }, []);
+
+  //change the default useerContext value to the value we got from useEffect
+
   return (
-    <div className="app">
-      <Header />
-      {/* Body should be only for path "/" */}
-      <Outlet />
-    </div>
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+      <div className="app">
+        <UserContext.Provider value={{ loggedInUser: "verma", setUserName }}>
+          <Header />
+        </UserContext.Provider>
+
+        {/* Body should be only for path "/" */}
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 

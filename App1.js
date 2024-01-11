@@ -21,8 +21,6 @@ const parent = React.createElement(
     ]),
   ]
 );
-console.log(parent);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-console.log(root);
 root.render(parent); //converts this heading object into an h1 tag and put in into the dom.

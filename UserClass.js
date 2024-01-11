@@ -19,18 +19,14 @@ class UserClass extends React.Component {
     }, 1);
   }
 
-  componentDidUpdate() {
-    console.log("componentDidUpdate");
-  }
+  componentDidUpdate() {}
 
   componentWillUnmount() {
-    console.log("componentWillUnmount");
     /* as this is shared across we can use it access the set time interval* */
     clearInterval(this.timer);
   }
 
   render() {
-    console.log(" child render");
     const { name, location, avatar_url } = this.state.userInfo;
     //debugger;
     return (

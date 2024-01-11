@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import UserClass from "../../UserClass";
 import User from "./User";
+import { UserContext } from "../utils/UserContext";
 
 class About extends Component {
   constructor(props) {
@@ -11,19 +12,18 @@ class About extends Component {
 
   componentDidMount() {
     console.log("parent componentDidMount");
-    this.setState =
-      ({
-        abc: "123445",
-      },
-      () => {
-        console.log("skjd", this.state.abc);
-      });
   }
   render() {
     console.log("Parent render");
     return (
       <div>
         <h1>About me</h1>
+        <div>
+          LoggedInUser
+          <UserContext.Consumer>
+            {({ loggedInUser }) => <h2>{loggedInUser}</h2>}
+          </UserContext.Consumer>
+        </div>
         <User
           name="Shilpi"
           location="gurgaon"

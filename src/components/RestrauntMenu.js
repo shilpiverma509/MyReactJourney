@@ -1,32 +1,52 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SWIGGY_API_MENU_URL } from "../utils/constants";
 import { Shimmer } from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import RestrauntCategory from "./RestrauntCategory";
+import { UserContext } from "../utils/UserContext";
 
 const RestrauntMenu = () => {
   const { resId } = useParams();
+  const [showIndex, setShowIndex] = useState(0);
+  const { loggedInUser } = useContext(UserContext);
 
   const MenuItem = useRestaurantMenu(resId);
 
   if (!MenuItem) return <Shimmer />;
-
-  const { name, cuisines, cloudinaryImageId } =
+  const { name, cuisines, costForTwoMessage } =
     MenuItem?.cards[0]?.card?.card?.info;
 
-  const { itemCards } =
-    MenuItem?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card
-      ?.itemCards;
-  return (
-    <div className="menu">
-      <h2>{name}</h2>
-      <h3>{cuisines}</h3>
+  const categories =
+    MenuItem?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (card) =>
+        card.card?.card?.["@type"] ==
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
 
-      {MenuItem?.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards.map(
-        (item) => (
-          <li key={item?.card?.info?.id}>{item?.card?.info?.name}</li>
-        )
-      )}
+  return (
+    <div className="text-center">
+      <h2 className="font-bold my-6 text-2xl">{name}</h2>
+      <p className="font-bold text-lg">
+        {cuisines.join(", ")}-{costForTwoMessage}{" "}
+      </p>
+      <h3>Menu</h3>
+      <div>{loggedInUser}</div>
+
+      {categories.map(({ card }, index) => {
+        //controlled component
+        return (
+          <>
+            <RestrauntCategory
+              title={card.card.title}
+              itemCards={card.card.itemCards}
+              key={card.card.id}
+              showItems={index === showIndex && true}
+              setShowIndex={() => setShowIndex(index)}
+            />
+          </>
+        );
+      })}
     </div>
   );
 };

@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 
 const User = ({ name, location, contact }) => {
-  console.log("usee");
   useEffect(() => {
-    console.log("use11sr");
-    const timer = setInterval(() => {
-      console.log("setInterval() called");
-    }, 1);
-    return () => {
-      clearInterval(timer);
-      console.log("useEffect return called");
-    };
-    console.log("render");
+    // const timer = setInterval(() => {
+    //   console.log("setInterval() called");
+    // }, 1);
+    // return () => {
+    //   clearInterval(timer);
+    //   console.log("useEffect return called");
+    // };
   }, []);
   return (
     <div className="user-card">
