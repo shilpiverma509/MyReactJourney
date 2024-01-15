@@ -6,15 +6,15 @@ import { UserContext } from "../utils/UserContext";
 class About extends Component {
   constructor(props) {
     super(props);
-    console.log(" Parent Constructing");
+    //console.log(" Parent Constructing");
     this.state = { abc: "123" };
   }
 
   componentDidMount() {
-    console.log("parent componentDidMount");
+    //console.log("parent componentDidMount");
   }
   render() {
-    console.log("Parent render");
+    //console.log("Parent render");
     return (
       <div>
         <h1>About me</h1>

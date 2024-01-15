@@ -9,6 +9,8 @@ import { Error } from "./src/components/Error";
 import RestrauntMenu from "./src/components/RestrauntMenu";
 import { UserContext } from "./src/utils/UserContext";
 //import Grocery from "./src/components/Grocery";
+import { Provider } from "react-redux";
+import appStore from "./src/utils/appStore";
 
 //chunking
 //lazyLoading
@@ -34,16 +36,18 @@ const AppLayout = () => {
   //change the default useerContext value to the value we got from useEffect
 
   return (
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-      <div className="app">
-        <UserContext.Provider value={{ loggedInUser: "verma", setUserName }}>
-          <Header />
-        </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <div className="app">
+          <UserContext.Provider value={{ loggedInUser: "verma", setUserName }}>
+            <Header />
+          </UserContext.Provider>
 
-        {/* Body should be only for path "/" */}
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+          {/* Body should be only for path "/" */}
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -63,6 +67,7 @@ const appRouter = createBrowserRouter([
         ),
       },
       { path: "/contact", element: <Contact /> },
+
       {
         path: "/grocery",
         element: (

@@ -42,5 +42,17 @@
       componentDidUpdate
 
    Unmount
-      when the component is removed from the DOM this method is called   
+      when the component is removed from the DOM this method is called
+
+      2 types of routing in web apps:
+      Client side Routing
+      Server side Routing
+
+      #Redux Toolkit 
+         1.Install @redux/toolkit and react-redux
+         2.Build our store
+         3. Connect store to our app
+         4. Slice(cart slice)
+         5.dispatch(action)
+         6.Selector(read the data)
    
