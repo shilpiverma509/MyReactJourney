@@ -11,6 +11,7 @@ import { UserContext } from "./src/utils/UserContext";
 //import Grocery from "./src/components/Grocery";
 import { Provider } from "react-redux";
 import appStore from "./src/utils/appStore";
+import Cart from "./src/components/Cart";
 
 //chunking
 //lazyLoading
@@ -67,6 +68,7 @@ const appRouter = createBrowserRouter([
         ),
       },
       { path: "/contact", element: <Contact /> },
+      { path: "/cart", element: <Cart /> },
 
       {
         path: "/grocery",

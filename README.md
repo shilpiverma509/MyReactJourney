@@ -55,4 +55,26 @@
          4. Slice(cart slice)
          5.dispatch(action)
          6.Selector(read the data)
-   
+
+
+   # Types of testing (developer)
+   1.Unit Testing s- (component testing )
+   2.Integration Testing - How multiple components are interacting with each other ( events like click event)
+   3.End to End Testing (e2e testing) -> Test a react application as soon as user lands on the page till the time it leaves the app. 
+
+   React testing library is build on top of DOM tetsing library hence more features
+
+# Setting up Testing in our app
+1.Install React Test Library
+2. Install Jest
+3. Install Babel dependencies (from jest documentation)
+4.Configure Babel (Add babel.config.js)
+5.Configure Parcel Config file to disable default babel configuration
+6.Jest configuration
+7. Install JSdom library (for version of jest 28 and purpose above)
+8.Install @babel/preset-react to make JSX work in test cases
+9. Inclye @babel/preset-react in our babel config
+10. Install @testing-library/jest-dom
+
+
+# whenever we are testing a react component we will have to render the react component on the jsdoms

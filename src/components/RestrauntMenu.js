@@ -36,15 +36,13 @@ const RestrauntMenu = () => {
       {categories.map(({ card }, index) => {
         //controlled component
         return (
-          <>
-            <RestrauntCategory
-              title={card.card.title}
-              itemCards={card.card.itemCards}
-              key={card.card.id}
-              showItems={index === showIndex && true}
-              setShowIndex={() => setShowIndex(index)}
-            />
-          </>
+          <RestrauntCategory
+            title={card.card.title}
+            itemCards={card.card.itemCards}
+            key={card.card.id}
+            showItems={index === showIndex && true}
+            setShowIndex={() => setShowIndex(index)}
+          />
         );
       })}
     </div>
